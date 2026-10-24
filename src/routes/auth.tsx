@@ -248,8 +248,8 @@ const DEMO_ACCOUNTS = [
 
 export const Route = createFileRoute("/auth")({
   validateSearch: (search: Record<string, unknown>): { mode?: string; redirect?: string } => ({
-    mode: search.mode as string | undefined,
-    redirect: search.redirect as string | undefined,
+    ...(typeof search["mode"] === "string" ? { mode: search["mode"] } : {}),
+    ...(typeof search["redirect"] === "string" ? { redirect: search["redirect"] } : {}),
   }),
   head: () => ({
     meta: [

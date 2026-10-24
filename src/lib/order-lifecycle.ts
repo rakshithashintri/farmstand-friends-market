@@ -12,7 +12,7 @@ export const ORDER_STAGES = [
   { key: "completed", label: "Completion" },
 ] as const;
 
-export type OrderStage = (typeof ORDER_STAGES)[number]["key"];
+export type OrderStage = (typeof ORDER_STAGES)[number]["key"] | "cancelled";
 
 export const ORDER_STAGE_KEYS = ORDER_STAGES.map((s) => s.key);
 
