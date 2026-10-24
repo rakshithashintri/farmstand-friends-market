@@ -10,33 +10,273 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AuthenticatedRouteRouteImport } from './routes/_authenticated/route'
+import { Route as AuthRouteImport } from './routes/auth'
+import { Route as ResetPasswordRouteImport } from './routes/reset-password'
+import { Route as AuthenticatedDashboardRouteImport } from './routes/_authenticated/dashboard'
+import { Route as AuthenticatedHistoryRouteImport } from './routes/_authenticated/history'
+import { Route as AuthenticatedProfileRouteImport } from './routes/_authenticated/profile'
+import { Route as AuthenticatedAdminIndexRouteImport } from './routes/_authenticated/admin/index'
+import { Route as AuthenticatedBuyerIndexRouteImport } from './routes/_authenticated/buyer/index'
+import { Route as AuthenticatedBuyerBrowseRouteImport } from './routes/_authenticated/buyer/browse'
+import { Route as AuthenticatedBuyerGroupOrdersRouteImport } from './routes/_authenticated/buyer/group-orders'
+import { Route as AuthenticatedBuyerOffersRouteImport } from './routes/_authenticated/buyer/offers'
+import { Route as AuthenticatedBuyerOrdersRouteImport } from './routes/_authenticated/buyer/orders'
+import { Route as AuthenticatedBuyerRequestsRouteImport } from './routes/_authenticated/buyer/requests'
+import { Route as AuthenticatedFarmerIndexRouteImport } from './routes/_authenticated/farmer/index'
+import { Route as AuthenticatedFarmerGroupSellingRouteImport } from './routes/_authenticated/farmer/group-selling'
+import { Route as AuthenticatedFarmerListingsRouteImport } from './routes/_authenticated/farmer/listings'
+import { Route as AuthenticatedFarmerOffersRouteImport } from './routes/_authenticated/farmer/offers'
+import { Route as AuthenticatedFarmerOrdersRouteImport } from './routes/_authenticated/farmer/orders'
+import { Route as AuthenticatedOrdersIdRouteImport } from './routes/_authenticated/orders.$id'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AuthenticatedRouteRoute = AuthenticatedRouteRouteImport.update({
+  id: '/_authenticated',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AuthRoute = AuthRouteImport.update({
+  id: '/auth',
+  path: '/auth',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ResetPasswordRoute = ResetPasswordRouteImport.update({
+  id: '/reset-password',
+  path: '/reset-password',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AuthenticatedDashboardRoute = AuthenticatedDashboardRouteImport.update({
+  id: '/dashboard',
+  path: '/dashboard',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
+const AuthenticatedHistoryRoute = AuthenticatedHistoryRouteImport.update({
+  id: '/history',
+  path: '/history',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
+const AuthenticatedProfileRoute = AuthenticatedProfileRouteImport.update({
+  id: '/profile',
+  path: '/profile',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
+const AuthenticatedAdminIndexRoute = AuthenticatedAdminIndexRouteImport.update({
+  id: '/admin/',
+  path: '/admin/',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
+const AuthenticatedBuyerIndexRoute = AuthenticatedBuyerIndexRouteImport.update({
+  id: '/buyer/',
+  path: '/buyer/',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
+const AuthenticatedBuyerBrowseRoute =
+  AuthenticatedBuyerBrowseRouteImport.update({
+    id: '/buyer/browse',
+    path: '/buyer/browse',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
+const AuthenticatedBuyerGroupOrdersRoute =
+  AuthenticatedBuyerGroupOrdersRouteImport.update({
+    id: '/buyer/group-orders',
+    path: '/buyer/group-orders',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
+const AuthenticatedBuyerOffersRoute =
+  AuthenticatedBuyerOffersRouteImport.update({
+    id: '/buyer/offers',
+    path: '/buyer/offers',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
+const AuthenticatedBuyerOrdersRoute =
+  AuthenticatedBuyerOrdersRouteImport.update({
+    id: '/buyer/orders',
+    path: '/buyer/orders',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
+const AuthenticatedBuyerRequestsRoute =
+  AuthenticatedBuyerRequestsRouteImport.update({
+    id: '/buyer/requests',
+    path: '/buyer/requests',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
+const AuthenticatedFarmerIndexRoute =
+  AuthenticatedFarmerIndexRouteImport.update({
+    id: '/farmer/',
+    path: '/farmer/',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
+const AuthenticatedFarmerGroupSellingRoute =
+  AuthenticatedFarmerGroupSellingRouteImport.update({
+    id: '/farmer/group-selling',
+    path: '/farmer/group-selling',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
+const AuthenticatedFarmerListingsRoute =
+  AuthenticatedFarmerListingsRouteImport.update({
+    id: '/farmer/listings',
+    path: '/farmer/listings',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
+const AuthenticatedFarmerOffersRoute =
+  AuthenticatedFarmerOffersRouteImport.update({
+    id: '/farmer/offers',
+    path: '/farmer/offers',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
+const AuthenticatedFarmerOrdersRoute =
+  AuthenticatedFarmerOrdersRouteImport.update({
+    id: '/farmer/orders',
+    path: '/farmer/orders',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
+const AuthenticatedOrdersIdRoute = AuthenticatedOrdersIdRouteImport.update({
+  id: '/orders/$id',
+  path: '/orders/$id',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/auth': typeof AuthRoute
+  '/reset-password': typeof ResetPasswordRoute
+  '/dashboard': typeof AuthenticatedDashboardRoute
+  '/history': typeof AuthenticatedHistoryRoute
+  '/profile': typeof AuthenticatedProfileRoute
+  '/buyer/browse': typeof AuthenticatedBuyerBrowseRoute
+  '/buyer/group-orders': typeof AuthenticatedBuyerGroupOrdersRoute
+  '/buyer/offers': typeof AuthenticatedBuyerOffersRoute
+  '/buyer/orders': typeof AuthenticatedBuyerOrdersRoute
+  '/buyer/requests': typeof AuthenticatedBuyerRequestsRoute
+  '/farmer/group-selling': typeof AuthenticatedFarmerGroupSellingRoute
+  '/farmer/listings': typeof AuthenticatedFarmerListingsRoute
+  '/farmer/offers': typeof AuthenticatedFarmerOffersRoute
+  '/farmer/orders': typeof AuthenticatedFarmerOrdersRoute
+  '/orders/$id': typeof AuthenticatedOrdersIdRoute
+  '/admin/': typeof AuthenticatedAdminIndexRoute
+  '/buyer/': typeof AuthenticatedBuyerIndexRoute
+  '/farmer/': typeof AuthenticatedFarmerIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/auth': typeof AuthRoute
+  '/reset-password': typeof ResetPasswordRoute
+  '/dashboard': typeof AuthenticatedDashboardRoute
+  '/history': typeof AuthenticatedHistoryRoute
+  '/profile': typeof AuthenticatedProfileRoute
+  '/buyer/browse': typeof AuthenticatedBuyerBrowseRoute
+  '/buyer/group-orders': typeof AuthenticatedBuyerGroupOrdersRoute
+  '/buyer/offers': typeof AuthenticatedBuyerOffersRoute
+  '/buyer/orders': typeof AuthenticatedBuyerOrdersRoute
+  '/buyer/requests': typeof AuthenticatedBuyerRequestsRoute
+  '/farmer/group-selling': typeof AuthenticatedFarmerGroupSellingRoute
+  '/farmer/listings': typeof AuthenticatedFarmerListingsRoute
+  '/farmer/offers': typeof AuthenticatedFarmerOffersRoute
+  '/farmer/orders': typeof AuthenticatedFarmerOrdersRoute
+  '/orders/$id': typeof AuthenticatedOrdersIdRoute
+  '/admin': typeof AuthenticatedAdminIndexRoute
+  '/buyer': typeof AuthenticatedBuyerIndexRoute
+  '/farmer': typeof AuthenticatedFarmerIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/_authenticated': typeof AuthenticatedRouteRouteWithChildren
+  '/auth': typeof AuthRoute
+  '/reset-password': typeof ResetPasswordRoute
+  '/_authenticated/dashboard': typeof AuthenticatedDashboardRoute
+  '/_authenticated/history': typeof AuthenticatedHistoryRoute
+  '/_authenticated/profile': typeof AuthenticatedProfileRoute
+  '/_authenticated/buyer/browse': typeof AuthenticatedBuyerBrowseRoute
+  '/_authenticated/buyer/group-orders': typeof AuthenticatedBuyerGroupOrdersRoute
+  '/_authenticated/buyer/offers': typeof AuthenticatedBuyerOffersRoute
+  '/_authenticated/buyer/orders': typeof AuthenticatedBuyerOrdersRoute
+  '/_authenticated/buyer/requests': typeof AuthenticatedBuyerRequestsRoute
+  '/_authenticated/farmer/group-selling': typeof AuthenticatedFarmerGroupSellingRoute
+  '/_authenticated/farmer/listings': typeof AuthenticatedFarmerListingsRoute
+  '/_authenticated/farmer/offers': typeof AuthenticatedFarmerOffersRoute
+  '/_authenticated/farmer/orders': typeof AuthenticatedFarmerOrdersRoute
+  '/_authenticated/orders/$id': typeof AuthenticatedOrdersIdRoute
+  '/_authenticated/admin/': typeof AuthenticatedAdminIndexRoute
+  '/_authenticated/buyer/': typeof AuthenticatedBuyerIndexRoute
+  '/_authenticated/farmer/': typeof AuthenticatedFarmerIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/auth'
+    | '/reset-password'
+    | '/dashboard'
+    | '/history'
+    | '/profile'
+    | '/buyer/browse'
+    | '/buyer/group-orders'
+    | '/buyer/offers'
+    | '/buyer/orders'
+    | '/buyer/requests'
+    | '/farmer/group-selling'
+    | '/farmer/listings'
+    | '/farmer/offers'
+    | '/farmer/orders'
+    | '/orders/$id'
+    | '/admin/'
+    | '/buyer/'
+    | '/farmer/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/auth'
+    | '/reset-password'
+    | '/dashboard'
+    | '/history'
+    | '/profile'
+    | '/buyer/browse'
+    | '/buyer/group-orders'
+    | '/buyer/offers'
+    | '/buyer/orders'
+    | '/buyer/requests'
+    | '/farmer/group-selling'
+    | '/farmer/listings'
+    | '/farmer/offers'
+    | '/farmer/orders'
+    | '/orders/$id'
+    | '/admin'
+    | '/buyer'
+    | '/farmer'
+  id:
+    | '__root__'
+    | '/'
+    | '/_authenticated'
+    | '/auth'
+    | '/reset-password'
+    | '/_authenticated/dashboard'
+    | '/_authenticated/history'
+    | '/_authenticated/profile'
+    | '/_authenticated/buyer/browse'
+    | '/_authenticated/buyer/group-orders'
+    | '/_authenticated/buyer/offers'
+    | '/_authenticated/buyer/orders'
+    | '/_authenticated/buyer/requests'
+    | '/_authenticated/farmer/group-selling'
+    | '/_authenticated/farmer/listings'
+    | '/_authenticated/farmer/offers'
+    | '/_authenticated/farmer/orders'
+    | '/_authenticated/orders/$id'
+    | '/_authenticated/admin/'
+    | '/_authenticated/buyer/'
+    | '/_authenticated/farmer/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AuthenticatedRouteRoute: typeof AuthenticatedRouteRouteWithChildren
+  AuthRoute: typeof AuthRoute
+  ResetPasswordRoute: typeof ResetPasswordRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +288,188 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/_authenticated': {
+      id: '/_authenticated'
+      path: ''
+      fullPath: '/'
+      preLoaderRoute: typeof AuthenticatedRouteRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/auth': {
+      id: '/auth'
+      path: '/auth'
+      fullPath: '/auth'
+      preLoaderRoute: typeof AuthRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/reset-password': {
+      id: '/reset-password'
+      path: '/reset-password'
+      fullPath: '/reset-password'
+      preLoaderRoute: typeof ResetPasswordRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/_authenticated/dashboard': {
+      id: '/_authenticated/dashboard'
+      path: '/dashboard'
+      fullPath: '/dashboard'
+      preLoaderRoute: typeof AuthenticatedDashboardRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/history': {
+      id: '/_authenticated/history'
+      path: '/history'
+      fullPath: '/history'
+      preLoaderRoute: typeof AuthenticatedHistoryRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/profile': {
+      id: '/_authenticated/profile'
+      path: '/profile'
+      fullPath: '/profile'
+      preLoaderRoute: typeof AuthenticatedProfileRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/admin/': {
+      id: '/_authenticated/admin/'
+      path: '/admin'
+      fullPath: '/admin/'
+      preLoaderRoute: typeof AuthenticatedAdminIndexRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/buyer/': {
+      id: '/_authenticated/buyer/'
+      path: '/buyer'
+      fullPath: '/buyer/'
+      preLoaderRoute: typeof AuthenticatedBuyerIndexRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/buyer/browse': {
+      id: '/_authenticated/buyer/browse'
+      path: '/buyer/browse'
+      fullPath: '/buyer/browse'
+      preLoaderRoute: typeof AuthenticatedBuyerBrowseRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/buyer/group-orders': {
+      id: '/_authenticated/buyer/group-orders'
+      path: '/buyer/group-orders'
+      fullPath: '/buyer/group-orders'
+      preLoaderRoute: typeof AuthenticatedBuyerGroupOrdersRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/buyer/offers': {
+      id: '/_authenticated/buyer/offers'
+      path: '/buyer/offers'
+      fullPath: '/buyer/offers'
+      preLoaderRoute: typeof AuthenticatedBuyerOffersRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/buyer/orders': {
+      id: '/_authenticated/buyer/orders'
+      path: '/buyer/orders'
+      fullPath: '/buyer/orders'
+      preLoaderRoute: typeof AuthenticatedBuyerOrdersRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/buyer/requests': {
+      id: '/_authenticated/buyer/requests'
+      path: '/buyer/requests'
+      fullPath: '/buyer/requests'
+      preLoaderRoute: typeof AuthenticatedBuyerRequestsRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/farmer/': {
+      id: '/_authenticated/farmer/'
+      path: '/farmer'
+      fullPath: '/farmer/'
+      preLoaderRoute: typeof AuthenticatedFarmerIndexRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/farmer/group-selling': {
+      id: '/_authenticated/farmer/group-selling'
+      path: '/farmer/group-selling'
+      fullPath: '/farmer/group-selling'
+      preLoaderRoute: typeof AuthenticatedFarmerGroupSellingRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/farmer/listings': {
+      id: '/_authenticated/farmer/listings'
+      path: '/farmer/listings'
+      fullPath: '/farmer/listings'
+      preLoaderRoute: typeof AuthenticatedFarmerListingsRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/farmer/offers': {
+      id: '/_authenticated/farmer/offers'
+      path: '/farmer/offers'
+      fullPath: '/farmer/offers'
+      preLoaderRoute: typeof AuthenticatedFarmerOffersRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/farmer/orders': {
+      id: '/_authenticated/farmer/orders'
+      path: '/farmer/orders'
+      fullPath: '/farmer/orders'
+      preLoaderRoute: typeof AuthenticatedFarmerOrdersRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/orders/$id': {
+      id: '/_authenticated/orders/$id'
+      path: '/orders/$id'
+      fullPath: '/orders/$id'
+      preLoaderRoute: typeof AuthenticatedOrdersIdRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
   }
 }
 
+interface AuthenticatedRouteRouteChildren {
+  AuthenticatedDashboardRoute: typeof AuthenticatedDashboardRoute
+  AuthenticatedHistoryRoute: typeof AuthenticatedHistoryRoute
+  AuthenticatedProfileRoute: typeof AuthenticatedProfileRoute
+  AuthenticatedBuyerBrowseRoute: typeof AuthenticatedBuyerBrowseRoute
+  AuthenticatedBuyerGroupOrdersRoute: typeof AuthenticatedBuyerGroupOrdersRoute
+  AuthenticatedBuyerOffersRoute: typeof AuthenticatedBuyerOffersRoute
+  AuthenticatedBuyerOrdersRoute: typeof AuthenticatedBuyerOrdersRoute
+  AuthenticatedBuyerRequestsRoute: typeof AuthenticatedBuyerRequestsRoute
+  AuthenticatedFarmerGroupSellingRoute: typeof AuthenticatedFarmerGroupSellingRoute
+  AuthenticatedFarmerListingsRoute: typeof AuthenticatedFarmerListingsRoute
+  AuthenticatedFarmerOffersRoute: typeof AuthenticatedFarmerOffersRoute
+  AuthenticatedFarmerOrdersRoute: typeof AuthenticatedFarmerOrdersRoute
+  AuthenticatedOrdersIdRoute: typeof AuthenticatedOrdersIdRoute
+  AuthenticatedAdminIndexRoute: typeof AuthenticatedAdminIndexRoute
+  AuthenticatedBuyerIndexRoute: typeof AuthenticatedBuyerIndexRoute
+  AuthenticatedFarmerIndexRoute: typeof AuthenticatedFarmerIndexRoute
+}
+
+const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
+  AuthenticatedDashboardRoute: AuthenticatedDashboardRoute,
+  AuthenticatedHistoryRoute: AuthenticatedHistoryRoute,
+  AuthenticatedProfileRoute: AuthenticatedProfileRoute,
+  AuthenticatedBuyerBrowseRoute: AuthenticatedBuyerBrowseRoute,
+  AuthenticatedBuyerGroupOrdersRoute: AuthenticatedBuyerGroupOrdersRoute,
+  AuthenticatedBuyerOffersRoute: AuthenticatedBuyerOffersRoute,
+  AuthenticatedBuyerOrdersRoute: AuthenticatedBuyerOrdersRoute,
+  AuthenticatedBuyerRequestsRoute: AuthenticatedBuyerRequestsRoute,
+  AuthenticatedFarmerGroupSellingRoute: AuthenticatedFarmerGroupSellingRoute,
+  AuthenticatedFarmerListingsRoute: AuthenticatedFarmerListingsRoute,
+  AuthenticatedFarmerOffersRoute: AuthenticatedFarmerOffersRoute,
+  AuthenticatedFarmerOrdersRoute: AuthenticatedFarmerOrdersRoute,
+  AuthenticatedOrdersIdRoute: AuthenticatedOrdersIdRoute,
+  AuthenticatedAdminIndexRoute: AuthenticatedAdminIndexRoute,
+  AuthenticatedBuyerIndexRoute: AuthenticatedBuyerIndexRoute,
+  AuthenticatedFarmerIndexRoute: AuthenticatedFarmerIndexRoute,
+}
+
+const AuthenticatedRouteRouteWithChildren =
+  AuthenticatedRouteRoute._addFileChildren(AuthenticatedRouteRouteChildren)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AuthenticatedRouteRoute: AuthenticatedRouteRouteWithChildren,
+  AuthRoute: AuthRoute,
+  ResetPasswordRoute: ResetPasswordRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
