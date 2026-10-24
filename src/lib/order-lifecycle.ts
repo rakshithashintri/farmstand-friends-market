@@ -117,7 +117,7 @@ export function hasAction(
 }
 
 export function stageIndex(stage: OrderStage): number {
-  return ORDER_STAGE_KEYS.indexOf(stage);
+  return ORDER_STAGE_KEYS.indexOf(stage as (typeof ORDER_STAGES)[number]["key"]);
 }
 
 export function stageLabel(stage: string): string {
