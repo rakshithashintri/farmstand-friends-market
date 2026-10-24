@@ -135,7 +135,7 @@ function RegisterForm() {
           <div>
             <Label htmlFor="reg-name">Full name</Label>
             <Input id="reg-name" value={form.fullName} onChange={set("fullName")} placeholder={role === "farmer" ? "Ramesh Kumar" : "Priya Sharma"} />
-            {errors.fullName && <p className="text-xs text-destructive">{errors.fullName}</p>}
+            {errors["fullName"] && <p className="text-xs text-destructive">{errors["fullName"]}</p>}
           </div>
           <div>
             <Label htmlFor="reg-org">{role === "farmer" ? "Farm name" : "Business name"}</Label>
@@ -145,29 +145,29 @@ function RegisterForm() {
             <div>
               <Label htmlFor="reg-phone">Phone number</Label>
               <Input id="reg-phone" value={form.phone} onChange={set("phone")} placeholder="+91 98765 43210" />
-              {errors.phone && <p className="text-xs text-destructive">{errors.phone}</p>}
+              {errors["phone"] && <p className="text-xs text-destructive">{errors["phone"]}</p>}
             </div>
             <div>
               <Label htmlFor="reg-loc">Location</Label>
-              <Input id="reg-loc" value={form.location} onChange={set("loc" in form ? "location" : "location")} placeholder="Nashik, Maharashtra" />
-              {errors.location && <p className="text-xs text-destructive">{errors.location}</p>}
+              <Input id="reg-loc" value={form.location} onChange={set("location")} placeholder="Nashik, Maharashtra" />
+              {errors["location"] && <p className="text-xs text-destructive">{errors["location"]}</p>}
             </div>
           </div>
           <div>
             <Label htmlFor="reg-email">Email</Label>
             <Input id="reg-email" type="email" value={form.email} onChange={set("email")} placeholder="you@example.com" />
-            {errors.email && <p className="text-xs text-destructive">{errors.email}</p>}
+            {errors["email"] && <p className="text-xs text-destructive">{errors["email"]}</p>}
           </div>
           <div className="grid gap-3 sm:grid-cols-2">
             <div>
               <Label htmlFor="reg-pass">Password</Label>
               <Input id="reg-pass" type="password" value={form.password} onChange={set("password")} />
-              {errors.password && <p className="text-xs text-destructive">{errors.password}</p>}
+              {errors["password"] && <p className="text-xs text-destructive">{errors["password"]}</p>}
             </div>
             <div>
               <Label htmlFor="reg-confirm">Confirm password</Label>
               <Input id="reg-confirm" type="password" value={form.confirm} onChange={set("confirm")} />
-              {errors.confirm && <p className="text-xs text-destructive">{errors.confirm}</p>}
+              {errors["confirm"] && <p className="text-xs text-destructive">{errors["confirm"]}</p>}
             </div>
           </div>
           <Button type="submit" className="w-full" disabled={busy}>
@@ -247,8 +247,8 @@ const DEMO_ACCOUNTS = [
 ];
 
 export const Route = createFileRoute("/auth")({
-  validateSearch: (search: Record<string, unknown>) => ({
-    mode: (search.mode as string) ?? "login",
+  validateSearch: (search: Record<string, unknown>): { mode?: string; redirect?: string } => ({
+    mode: search.mode as string | undefined,
     redirect: search.redirect as string | undefined,
   }),
   head: () => ({
