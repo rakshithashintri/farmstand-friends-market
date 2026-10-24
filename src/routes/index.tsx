@@ -66,12 +66,12 @@ function Home() {
           </p>
           <div className="flex flex-wrap gap-3">
             <Button size="lg" variant="secondary" asChild>
-              <Link to="/auth?mode=register">
+              <Link to="/auth" search={{ mode: "register" }}>
                 <Tractor className="mr-2 size-5" /> Join as Farmer
               </Link>
             </Button>
             <Button size="lg" variant="outline" className="border-primary-foreground/40 bg-primary-foreground/10 text-primary-foreground hover:bg-primary-foreground/20" asChild>
-              <Link to="/auth?mode=register">
+              <Link to="/auth" search={{ mode: "register" }}>
                 <Store className="mr-2 size-5" /> Join as Bulk Buyer
               </Link>
             </Button>
@@ -124,7 +124,7 @@ function Home() {
                     <Badge variant="outline">{l.quality_grade}</Badge>
                   </div>
                   <p className="text-sm text-muted-foreground">
-                    {l.farm_name ?? l.profiles?.full_name} · {l.farm_location}
+                    {l.profiles?.farm_name ?? l.profiles?.full_name} · {l.farm_location}
                   </p>
                   <p className="font-semibold text-primary">
                     {currency(l.price_per_unit)}/{l.unit}{" "}

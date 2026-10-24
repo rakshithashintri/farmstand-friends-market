@@ -174,7 +174,7 @@ export function Navbar() {
                 <Link to="/auth">Sign in</Link>
               </Button>
               <Button size="sm" asChild>
-                <Link to="/auth?mode=register">Join as Farmer / Buyer</Link>
+                <Link to="/auth" search={{ mode: "register" }}>Join as Farmer / Buyer</Link>
               </Button>
             </>
           )}
