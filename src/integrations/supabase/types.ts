@@ -399,6 +399,7 @@ export type Database = {
       orders: {
         Row: {
           agreed_price_per_unit: number
+          buyer_confirmed: boolean
           buyer_confirmed_at: string | null
           buyer_id: string
           buyer_request_id: string | null
@@ -407,6 +408,7 @@ export type Database = {
           crop_name: string
           delivery_date: string | null
           delivery_location: string | null
+          farmer_confirmed: boolean
           farmer_id: string | null
           final_quantity: number | null
           group_order_id: string | null
@@ -420,6 +422,7 @@ export type Database = {
         }
         Insert: {
           agreed_price_per_unit: number
+          buyer_confirmed?: boolean
           buyer_confirmed_at?: string | null
           buyer_id: string
           buyer_request_id?: string | null
@@ -428,6 +431,7 @@ export type Database = {
           crop_name: string
           delivery_date?: string | null
           delivery_location?: string | null
+          farmer_confirmed?: boolean
           farmer_id?: string | null
           final_quantity?: number | null
           group_order_id?: string | null
@@ -441,6 +445,7 @@ export type Database = {
         }
         Update: {
           agreed_price_per_unit?: number
+          buyer_confirmed?: boolean
           buyer_confirmed_at?: string | null
           buyer_id?: string
           buyer_request_id?: string | null
@@ -449,6 +454,7 @@ export type Database = {
           crop_name?: string
           delivery_date?: string | null
           delivery_location?: string | null
+          farmer_confirmed?: boolean
           farmer_id?: string | null
           final_quantity?: number | null
           group_order_id?: string | null
@@ -685,6 +691,16 @@ export type Database = {
         Returns: boolean
       }
       is_admin: { Args: never; Returns: boolean }
+      notify_user: {
+        Args: {
+          _link: string
+          _message: string
+          _title: string
+          _type: string
+          _user_id: string
+        }
+        Returns: undefined
+      }
     }
     Enums: {
       app_role: "farmer" | "buyer" | "admin"
