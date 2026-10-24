@@ -20,7 +20,9 @@ Source: uploaded "Project Prompt: Farmer Marketplace Platform" + workspace follo
 - [ ] Offer negotiation: accept / counteroffer statuses (Pending, Accepted, Counteroffer, Rejected)
 - [ ] Order lifecycle: inquiry → matching → quotation → confirmation → preparation → dispatch → delivery → completion; buyer confirms receipt
 - [ ] Stage matrix: per-stage, per-role actions enforced on each order view (buyer / farmer / admin)
-- [ ] Notification matrix: matches, quotations, confirmation, preparation, dispatch, delivery, inspection, payout
+- [ ] Notification matrix: matches, quotations, confirmation, preparation, dispatch, delivery, inspection, payout (DB triggers)
+- [ ] Smoke test: deployed buyer/farmer/admin order actions across lifecycle stages
+- [ ] Verify order notification triggers fire correctly (retries/fallback: in-app notifications are DB-triggered and immediate)
 - [ ] Transaction history page
 - [ ] Notifications (in-app) for offers, counteroffers, confirmations, delivery updates
 - [ ] Admin dashboard: users, listings, orders, disputes
